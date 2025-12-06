@@ -1,4 +1,4 @@
-import CaesarView from "@/src/view/dash/caesar/CaesarView"; // Import View yang sudah dibuat sebelumnya
+import { CaesarView } from "@/src/view";
 
 export const metadata = {
   title: "Caesar Cipher | Shtt",

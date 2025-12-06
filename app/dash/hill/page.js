@@ -1,4 +1,4 @@
-import HillView from "@/src/view/dash/hill/HillView"; // Import View yang sudah dibuat sebelumnya
+import { HillView } from "@/src/view";
 
 export const metadata = {
   title: "Hill Cipher | Shtt",

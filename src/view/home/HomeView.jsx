@@ -19,10 +19,6 @@ const HomeView = () => {
   const [titleText, setTitleText] = useState('');
   const [subtitleText, setSubtitleText] = useState('');
 
-  // --- STYLE DEFINITION ---
-  // Style Liquid Glass sesuai request Anda.
-  // Note: Saya menghapus w-40 h-40 agar bisa dipakai di berbagai ukuran elemen,
-  // tapi visual effect-nya (shadow, blur, border) PERSIS seperti yang Anda minta.
   const liquidGlassStyle = `
     backdrop-blur bg-white/10 border border-white/10 saturate-120 
     shadow-[inset_2px_2px_3px_-1px_#ffffff70,inset_-2px_-2px_3px_-1px_#ffffff70,inset_0_0_16px_#ffffff50,0_4px_12px_-2px_#ffffff40] 
@@ -126,8 +122,6 @@ const HomeView = () => {
     return (
       <div 
         ref={cardRef}
-        // MENERAPKAN STYLE KHUSUS DI SINI
-        // Menggunakan className liquidGlassStyle + rounded besar agar terlihat seperti "bubble" kaca
         className={`${liquidGlassStyle} rounded-[2rem] p-8 hover:scale-105 transition-all duration-500 cursor-pointer group flex flex-col items-start h-full`}
       >
         <div className="bg-white/10 w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-white/20 shadow-inner group-hover:bg-white/20 transition-all duration-300">
@@ -150,7 +144,6 @@ const HomeView = () => {
   ];
 
   return (
-    // Background diubah ke Dark agar efek Glass terlihat
     <div className="min-h-screen bg-slate-900 overflow-hidden text-white selection:bg-sky-500/30">
 
       {/* Floating particles */}
