@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import os from "os";
-import { version as nextVersion } from "next/package.json";
+import nextPkg from "next/package.json"; // FIXED
 
 // Store app start time (survives warm-start container)
 if (!globalThis.appStartTime) {
@@ -33,7 +33,7 @@ export async function GET() {
 
     // 4. Next.js version
     const nextInfo = {
-        next_version: nextVersion,
+        next_version: nextPkg.version,
     };
 
     return NextResponse.json({
