@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "firebase-admin": "^13.6.0",
     "gsap": "^3.13.0",
     "hamburger-react": "^2.5.2",
     "lucide-react": "^0.556.0",
