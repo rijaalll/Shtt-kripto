@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
-import { FileText, Key, ArrowRightLeft, Copy, RefreshCw, AlertCircle } from 'lucide-react';
+// Tambahkan import 'Check'
+import { FileText, Key, ArrowRightLeft, Copy, RefreshCw, AlertCircle, Check } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -18,9 +19,11 @@ export default function VigenereView() {
   const [input, setInput] = useState('');
   const [key, setKey] = useState('');
   const [output, setOutput] = useState('');
-  const [mode, setMode] = useState('encrypt'); // 'encrypt' | 'decrypt'
+  const [mode, setMode] = useState('encrypt'); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  // Tambah state copied
+  const [copied, setCopied] = useState(false);
 
   useGSAP(() => {
     gsap.from(".gsap-item", {
@@ -34,7 +37,6 @@ export default function VigenereView() {
   }, { scope: containerRef });
 
   const handleProcess = async () => {
-    // Validasi input
     if (!input || !key) {
       setError("Mohon isi Teks dan Key terlebih dahulu.");
       return;
@@ -46,13 +48,8 @@ export default function VigenereView() {
 
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-      
       const endpoint = `${apiUrl}/${mode}/vigenere`;
-      
-      const body = {
-        text: input,
-        key: key
-      };
+      const body = { text: input, key: key };
 
       const res = await fetch(endpoint, {
         method: 'POST',
@@ -80,8 +77,13 @@ export default function VigenereView() {
     }
   };
 
+  // Update fungsi copy
   const copyToClipboard = () => {
-    if (output) navigator.clipboard.writeText(output);
+    if (output) {
+        navigator.clipboard.writeText(output);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
@@ -207,13 +209,15 @@ export default function VigenereView() {
                  }
               </div>
 
+              {/* BUTTON COPY DIUPDATE */}
               <div className="mt-4 flex justify-end">
                 <button 
                   onClick={copyToClipboard}
                   disabled={!output}
                   className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm font-medium transition-colors text-gray-300 hover:text-white disabled:opacity-50"
                 >
-                  <Copy size={16} /> Copy Result
+                  {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />} 
+                  {copied ? "Copied!" : "Copy"}
                 </button>
               </div>
            </div>

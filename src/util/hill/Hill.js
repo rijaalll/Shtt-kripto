@@ -2,7 +2,6 @@
 // Utility FUNGSI HILL CIPHER
 // ==============================
 
-// Bersihkan input menjadi huruf A–Z
 export function sanitizeInput(text) {
     return (text || "").replace(/[^A-Za-z]/g, "").toUpperCase();
 }
