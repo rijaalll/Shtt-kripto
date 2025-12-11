@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Shield, Lock, FileText, Info, ChevronRight, X } from 'lucide-react'; // Tambah icon X
+import { Shield, Lock, FileText, Info, ChevronRight, X, FileLock } from 'lucide-react';
 import { Squash as Hamburger } from 'hamburger-react';
 import gsap from 'gsap';
 
@@ -18,6 +18,7 @@ const navItems = [
   { href: '/dash/hill', label: 'Hill Cipher', icon: Shield },
   { href: '/dash/caesar', label: 'Caesar Cipher', icon: Lock },
   { href: '/dash/vigenere', label: 'Vigenere Cipher', icon: FileText },
+  { href: '/dash/des', label: 'DES File Encryption', icon: FileLock },
   { href: '/dash/info', label: 'Info', icon: Info },
 ];
 
